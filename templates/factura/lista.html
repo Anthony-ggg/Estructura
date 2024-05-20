@@ -1,0 +1,36 @@
+{% extends "template.html" %}
+{% block content %}
+<h2 class="text-white">Lista de facturas</h2>
+<div class="booking-form-body">
+    <a href="/factura/guardar" class="btn btn-danger">AGREGAR</a>
+    <table id="tabla" class="table text-white">
+        <thead>
+            <th>ID</th>
+            <th>Persona</th>
+            <th>Fecha</th>
+            <th>RUC</th>
+            <th>Sub total</th>
+            <th>Precio</th>
+            <th>Retención</th>
+            <th>Tipo Identificación</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for item in lista %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.persona.apellidos}} {{item.persona.nombres}}</td>
+                <td>{{item.fecha}}</td>
+                <td>{{item.ruc}}</td>
+                <td>{{item.subtotal}}</td>
+                <td>{{item.precio}}</td>
+                <td>{{item.retencion}}</td>
+                <td>{{item.tipo}}</td>
+                <td><a href="/factura/editar/{{item.id}}" class="btn btn-info">Modificar</a></td>
+                <td><a href="/factura/eliminar/{{item.id}}" class="btn btn-danger">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
